@@ -12,14 +12,5 @@ module.exports = (app) => {
     })
     // add librery post api
     app.post('/librery/add', libreryController.addLibrary)
-    app.post('/librery/addUnshift', libreryController.unShiftLibrary)
-    app.post('/librery/addPush', libreryController.pushLibrary)
-    app.delete('/librery/deletepop', libreryController.popDeleteLastLibrary)
-    app.delete('/librery/deleteshift', libreryController.shiftDeleteFirstLibrary)
-    app.delete('/librery/deletesplice', libreryController.spliceDeleteLibrary)
-
-
-
-
  
 }
