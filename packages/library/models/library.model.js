@@ -8,6 +8,6 @@ const librarySchema = new mongoose.Schema({
     isOpen:Boolean
 });
 
-const LibraryModel = mongoose.model("User", librarySchema);
+const LibraryModel = mongoose.model("library", librarySchema);
 
 module.exports = LibraryModel;
