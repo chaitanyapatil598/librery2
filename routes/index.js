@@ -1,4 +1,4 @@
-const libreryController = require('../packages/library/library.controller')
+const libraryController = require('../packages/library/library.controller')
 
 
 
@@ -11,6 +11,12 @@ module.exports = (app) => {
         })
     })
     // add librery post api
-    app.post('/librery/add', libreryController.addLibrary)
+    app.post('/library/add', libraryController.addLibrary)
+
+    // Get library list
+    app.get('/library/list',libraryController.getLibraryList)
+
+    // Get library 
+    app.post('/library/findOne',libraryController.getLibrary)
  
 }
