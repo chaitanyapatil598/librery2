@@ -70,7 +70,7 @@ module.exports = {
                 statusCode: 200
             })
 
-        } catch (error) {
+
             return res.pop({
                 message: ' last row of librery was not deleted !',
                 status: false,

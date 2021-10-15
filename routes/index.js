@@ -18,8 +18,4 @@ module.exports = (app) => {
     app.delete('/librery/deleteshift', libreryController.shiftDeleteFirstLibrary)
     app.delete('/librery/deletesplice', libreryController.spliceDeleteLibrary)
 
-
-
-
- 
 }
