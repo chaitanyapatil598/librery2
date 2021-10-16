@@ -11,6 +11,6 @@ module.exports = (app) => {
         })
     })
     // add librery post api
-    app.post('/librery/add', libreryController.addLibrary)
+    app.post('/library/add', libreryController.addLibrary)
  
 }
