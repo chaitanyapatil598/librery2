@@ -1,4 +1,4 @@
-const libreryController = require('../packages/library/library.controller')
+const libraryController = require('../packages/library/library.controller')
 
 
 
@@ -11,6 +11,7 @@ module.exports = (app) => {
         })
     })
     // add librery post api
+<<<<<<< HEAD
     app.post('/librery/add', libreryController.addLibrary)
     app.post('/librery/addUnshift', libreryController.unShiftLibrary)
     app.post('/librery/addPush', libreryController.pushLibrary)
@@ -18,4 +19,14 @@ module.exports = (app) => {
     app.delete('/librery/deleteshift', libreryController.shiftDeleteFirstLibrary)
     app.delete('/librery/deletesplice', libreryController.spliceDeleteLibrary)
 
+=======
+    app.post('/library/add', libraryController.addLibrary)
+
+    // Get library list
+    app.get('/library/list',libraryController.getLibraryList)
+
+    // Get library 
+    app.post('/library/findOne',libraryController.getLibrary)
+ 
+>>>>>>> 71a32d8876600a5a3dec971fd9b320e5eb7da3d9
 }

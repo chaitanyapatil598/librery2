@@ -1,11 +1,42 @@
-
+const LibraryService = require('./library.service')
 module.exports = {
-    addLibrary: (req, res, next) => {
+    addLibrary: async (req, res, next) => {
         try {
             const libreryData = req.body
-
+            if (!libreryData.name) {
+                return res.status(400).json({
+                    message: 'library name required!',
+                    status: false,
+                    statusCode: 400
+                })
+            } else if (!libreryData.city) {
+                return res.status(400).json({
+                    message: 'library city required!',
+                    status: false,
+                    statusCode: 400
+                })
+            } else if (!libreryData.department) {
+                return res.status(400).json({
+                    message: 'library department required!',
+                    status: false,
+                    statusCode: 400
+                })
+            } else if (!libreryData.year) {
+                return res.status(400).json({
+                    message: 'library year required!',
+                    status: false,
+                    statusCode: 400
+                })
+            } else if (!libreryData.isOpen) {
+                return res.status(400).json({
+                    message: 'library status required!',
+                    status: false,
+                    statusCode: 400
+                })
+            }
+            const libraryResult = await LibraryService.insertLibrary(libreryData)
             return res.send({
-                data: libreryData,
+                data: libraryResult,
                 message: ' librery added succesfully',
                 status: true,
                 statusCode: 200
@@ -19,103 +50,66 @@ module.exports = {
             })
 
         }
-    }, pushLibrary: (req, res, next) => {
-        try {
-            const libreryData = req.body
-
-            return res.push({
-                data: libreryData,
-                message: ' librery added succesfully',
-                status: true,
-                statusCode: 200
-            })
-
-        } catch (error) {
-            return res.push({
-                message: ' internal server error at add librery',
-                status: false,
-                statusCode: 500
-            })
-        }
     },
 
-    unShiftLibrary: (req, res, next) => {
+    getLibraryList: async (req, res, next) => {
         try {
-            const libreryData = req.body
-
-            return res.unShift({
-                data: libreryData,
-                message: ' fist row of librery added succesfully',
+            const libraryList = await LibraryService.findAllLibraries()
+            return res.status(200).json({
+                message: 'Library list get successfully.',
                 status: true,
-                statusCode: 200
+                statusCode: 200,
+                data: libraryList
             })
-
-        } catch (error) {
-            return res.unShift({
-                message: ' fist row of librery was not adeded !',
-                status: false,
-                statusCode: 500
-            })
-
-        }
-    },
-    popDeleteLastLibrary: (req, res, next) => {
-        try {
-            const libreryData = req.body
-
-            return res.pop({
-                data: libreryData,
-                message: ' last row of librery deleted succesfully',
-                status: true,
-                statusCode: 200
-            })
+<<<<<<< HEAD
 
 
             return res.pop({
                 message: ' last row of librery was not deleted !',
-                status: false,
-                statusCode: 500
-            })
-        }
-    },
-    shiftDeleteFirstLibrary: (req, res, next) => {
-        try {
-            const libreryData = req.body
-
-            return res.shift({
-                data: libreryData,
-                message: ' last row of librery deleted succesfully',
-                status: true,
-                statusCode: 200
-            })
-
+=======
         } catch (error) {
-            return res.shift({
-                message: ' last row of librery was not deleted !',
+            return res.status(500).json({
+                message: 'Internal server error!',
+>>>>>>> 71a32d8876600a5a3dec971fd9b320e5eb7da3d9
                 status: false,
-                statusCode: 500
+                statusCode: 500,
+                error: error
             })
         }
     },
-    spliceDeleteLibrary: (req, res, next) => {
+
+    getLibrary: async (req, res, next) => {
         try {
-            const libreryData = req.body
-
-            return res.splice({
-                data: libreryData,
-                message: ' selective row of librery deleted succesfully',
+            const filterKeyValue = req.body
+            if (Object.entries(filterKeyValue).length === 0 && filterKeyValue.constructor === Object) {
+                return res.status(400).json({
+                    message: 'invalid filter key values!',
+                    status: false,
+                    statusCode: 400
+                })
+            }
+            const library = await LibraryService.findOneLibrary(filterKeyValue)
+            if(!library){
+                return res.status(200).json({
+                    message: 'Library not found.',
+                    status: true,
+                    statusCode: 204
+                }) 
+            }
+            return res.status(200).json({
+                message: 'Library get successfully.',
                 status: true,
-                statusCode: 200
+                statusCode: 200,
+                data: library
             })
-
         } catch (error) {
-            return res.splice({
-                message: ' selective row of librery was not deleted !',
+            return res.status(500).json({
+                message: 'Internal server error!',
                 status: false,
-                statusCode: 500
+                statusCode: 500,
+                error: error
             })
-
         }
-    },
+    }
 }
 
