@@ -14,9 +14,12 @@ module.exports = (app) => {
     app.post('/library/add', libraryController.addLibrary)
 
     // Get library list
-    app.get('/library/list',libraryController.getLibraryList)
+    app.get('/library/list', libraryController.getLibraryList)
 
     // Get library 
-    app.post('/library/findOne',libraryController.getLibrary)
- 
+    app.post('/library/findOne', libraryController.getLibrary)
+
+    // update library by Id
+    app.put('/library/update/:libraryId', libraryController.updateLibraryById)
+
 }
