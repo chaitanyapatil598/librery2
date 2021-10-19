@@ -10,16 +10,29 @@ exports.insertLibrary = async (libraryData) => {
                 year: libraryData.year,
                 isOpen: libraryData.isOpen
             });
-            await library.save()
-            resolve(library)
+            const result = await library.save()
+            resolve(result)
         } catch (error) {
             reject(error)
         }
     })
 }
 
-exports.editLibrary = async () => {
-
+exports.updateLibraryById = async (_id, libraryData) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            const library = await Library.findByIdAndUpdate({ _id }, {
+                name: libraryData.name,
+                city: libraryData.city,
+                department: libraryData.department,
+                year: libraryData.year,
+                isOpen: libraryData.isOpen
+            },{ new: true})
+            resolve(library)
+        } catch (error) {
+            reject(error)
+        }
+    })
 }
 
 exports.findAllLibraries = async () => {
