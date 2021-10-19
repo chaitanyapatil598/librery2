@@ -61,16 +61,10 @@ module.exports = {
                 statusCode: 200,
                 data: libraryList
             })
-<<<<<<< HEAD
 
 
             return res.pop({
                 message: ' last row of librery was not deleted !',
-=======
-        } catch (error) {
-            return res.status(500).json({
-                message: 'Internal server error!',
->>>>>>> 71a32d8876600a5a3dec971fd9b320e5eb7da3d9
                 status: false,
                 statusCode: 500,
                 error: error
