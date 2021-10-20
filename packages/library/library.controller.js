@@ -27,9 +27,9 @@ module.exports = {
                     status: false,
                     statusCode: 400
                 })
-            } else if (!libreryData.isOpen) {
+            } else if (libreryData.isOpen!=true && libreryData.isOpen!=false) {
                 return res.status(400).json({
-                    message: 'library status required!',
+                    message: 'library isOpen required!',
                     status: false,
                     statusCode: 400
                 })
@@ -61,15 +61,16 @@ module.exports = {
                 statusCode: 200,
                 data: libraryList
             })
-
-
-            return res.pop({
-                message: ' last row of librery was not deleted !',
+        }
+        catch (error) {
+            return res.status(500).json({
+                message: 'Internal server error!',
                 status: false,
                 statusCode: 500,
                 error: error
             })
         }
+
     },
 
     getLibrary: async (req, res, next) => {
@@ -157,7 +158,7 @@ module.exports = {
                 })
             }
 
-            const libraryResult = await LibraryService.updateLibraryById(_id,libreryData)
+            const libraryResult = await LibraryService.updateLibraryById(_id, libreryData)
             return res.send({
                 data: libraryResult,
                 message: ' librery updated succesfully',
