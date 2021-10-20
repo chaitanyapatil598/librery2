@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');  
 const librarySchema = new mongoose.Schema({
-    _id: mongoose.Schema.Types.ObjectId,
     name: String,
     city: String,
     department : String,

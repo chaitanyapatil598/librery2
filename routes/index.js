@@ -1,4 +1,4 @@
-const libreryController = require('../packages/library/library.controller')
+const libraryController = require('../packages/library/library.controller')
 
 
 
@@ -10,7 +10,17 @@ module.exports = (app) => {
             message: "welcome aspra server"
         })
     })
-    // add librery post api
-    app.post('/library/add', libreryController.addLibrary)
- 
+    
+    // Get library list
+    app.get('/library/list', libraryController.getLibraryList)
+
+    // Get library 
+    app.post('/library/findOne', libraryController.getLibrary)
+
+    //add library
+    app.post('/library/add', libraryController.addLibrary)
+
+    // update library by Id
+    app.put('/library/update/:libraryId', libraryController.updateLibraryById)
+
 }

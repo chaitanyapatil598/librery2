@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 mongoose.Promise = require("bluebird");
-var dbUrl = 'mongodb://localhost:27017/libraryDB'
-mongoose.connect(dbUrl, { useNewUrlParser: true, useUnifiedTopology: true });
+var dbUrl = 'mongodb://localhost:27017/libraryDB' //'mongodb://localhost:27017/writeYourDbName'
+mongoose.connect(dbUrl,{ useNewUrlParser: true, useUnifiedTopology: true });
 // When successfully connected
 mongoose.connection.on('connected', function () {
     console.log('Mongoose connection open successful ');
@@ -14,11 +14,4 @@ mongoose.connection.on('error', function (err) {
 mongoose.connection.on('disconnected', function () {
     console.log('Mongoose connection disconnected');
 });
-mongoose.connection.on("error", (err) => {
-    if (err.message.indexOf("ECONNREFUSED") !== -1) {
-        log.error("Error: The server was not able to reach MongoDB.\nMaybe it's not running?");
-        process.exit(1);
-    } else {
-        throw err;
-    }
-});
+
