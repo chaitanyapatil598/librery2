@@ -1,7 +1,4 @@
 const libraryController = require('../packages/library/library.controller')
-
-
-
 module.exports = (app) => {
     app.get('/', (req, res) => {
         return res.send({
@@ -10,7 +7,9 @@ module.exports = (app) => {
             message: "welcome aspra server"
         })
     })
-    
+}
+        
+
     // Get library list
     app.get('/library/list', libraryController.getLibraryList)
 

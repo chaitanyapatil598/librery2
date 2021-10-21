@@ -15,3 +15,56 @@ mongoose.connection.on('disconnected', function () {
     console.log('Mongoose connection disconnected');
 });
 
+
+const mongoose = require("mongoose")
+mongoose.Promise = require("bluebird")
+var dbUrl = 'mongoose://localhost:27017/'
+mongoose.connect(dbUrl, {useNewUrlParser: true, useUnifiedTopology: true})
+
+
+
+
+
+const mongoose = require("mongoose")
+mongoose.Promise = require("bluebird")
+var dbUrl = 'mongoose//localhost:27017/library'
+mongoose.connect (dbUrl, {useNewUrlParser: true, useUnifiedTopology: true})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

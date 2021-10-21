@@ -11,3 +11,11 @@ require('./routes/index')(app)
 app.listen(port, () => {
     console.log(`congratulation ! server is listening on ${port}`)
 })
+
+const express = require("express");
+const app = express();
+app.use(express.json());
+const port = 5000;
+app.listen(port, ()=>{
+    console.log(`Congratulation! Server is listening on ${port}`)
+})
